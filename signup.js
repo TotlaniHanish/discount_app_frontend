@@ -1,4 +1,6 @@
-function signup() {
+import * as common from './httpRequest.js';
+
+const signup = () => {
     let firstName = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let password = document.getElementById('password').value;
@@ -14,21 +16,13 @@ function signup() {
         isShopOwner
     };
 
-    fetch('http://192.168.0.110:5000/signup', {
-        method: 'POST',
-        headers: {
-          Accept: 'application.json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(signupData),
-      }).then(response => {
-        console.log(response);
-        return response.json();
-      }).then(data => {
-        console.log(data);
-  
-      }).catch(error => {
-        console.log(error);
-      });
+    common.post('/signup', JSON.stringify(signup), signupSuccess, null);
 }
+
+const signupSuccess = (data) => {
+    document.location.href = "login.html";
+};
+
+document.getElementById('signup').onclick = signup;
+
 
