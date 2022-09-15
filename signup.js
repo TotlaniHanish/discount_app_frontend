@@ -16,7 +16,7 @@ const signup = () => {
         isShopOwner
     };
 
-    common.post('/signup', JSON.stringify(signup), signupSuccess, null);
+    common.post('/signup', JSON.stringify(signupData), signupSuccess, null);
 }
 
 const signupSuccess = (data) => {

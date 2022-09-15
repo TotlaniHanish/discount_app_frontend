@@ -1,5 +1,5 @@
 export function get(url, functionToCallOnSuccess, functionToCallOnError) {
-    fetch('http://192.168.0.110:5000' + url, {
+    fetch('http://localhost:5000' + url, {
         method: 'GET',
         headers: {
           Accept: 'application.json',
@@ -19,7 +19,7 @@ export function get(url, functionToCallOnSuccess, functionToCallOnError) {
 }
 
 export function post(url, body, functionToCallOnSuccess, functionToCallOnError) {
-    fetch('http://192.168.0.110:5000' + url, {
+    fetch('http://localhost:5000' + url, {
         method: 'POST',
         headers: {
           Accept: 'application.json',
@@ -32,8 +32,10 @@ export function post(url, body, functionToCallOnSuccess, functionToCallOnError) 
         return response.json();
       }).then(data => {
         console.log(data);
-        if (functionToCallOnSuccess)
-            functionToCallOnSuccess(data);
+        if (functionToCallOnSuccess && data.statusCode == 200)
+          functionToCallOnSuccess(data);
+        else
+          functionToCallOnError(data);
       }).catch(error => {
         console.log(error);
         if (functionToCallOnError)
