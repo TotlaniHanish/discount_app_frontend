@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Coupons</title>
+</head>
+
+<body onload="showHide()">
+    <!-- navbar  -->
+    <!-- <div w3-include-html="navbar.html"></div> -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="./images/PngItem_1274996.png" alt="" width="110" height="32"
+                    class="d-inline-block align-text-top">
+            </a>
+            <span class="navbar-text">
+                <ul class="m-0 nav">
+                    <li class=" dropstart">
+                        <a style="text-decoration: none; color: rgb(107, 106, 106);" class=" dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false" id="hide-dropdown">
+                            <span id="userdetails"></span>
+                            <span class="me-2" id="userlogo"><i class="fa fa-user"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="shopbtn">Shop</a></li>
+                            <li><a class="dropdown-item" href="#" id="logoutbtn">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </span>
+        </div>
+    </nav>
+
+
+    <!-- Log in form   -->
+    <div class=" container col-6 mt-5">
+        <form class="row g-3 loginform" onsubmit="return false;">
+            <h2>CREATE SHOP</h2>
+            <div>
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Shop Name">
+            </div>
+            <div>
+                <label for="inputContact" class="form-label">Contact</label>
+                <input type="text" class="form-control" id="contact" placeholder="contact">
+            </div>
+            <div>
+                <label for="inputPassword" class="form-label">Address</label>
+                <textarea name="address" class="form-control" id="address" cols="30" rows="4" placeholder="Full Address"
+                    style="resize: none;"></textarea>
+            </div>
+            <div>
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" placeholder="City">
+            </div>
+            <div class="col-12">
+                <button type="submit" id="createshop" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        function showHide() {
+            if (sessionStorage.getItem('auth') !== null) {
+                document.getElementById('shopbtn').style.display = "none";
+                document.getElementById('userdetails').innerHTML = sessionStorage.getItem("userfirstname") + " " + sessionStorage.getItem("userlastname")
+            }else{
+                document.location.href = "index.html";
+            }
+        }
+
+    </script>
+<script type="module" src="logout.js"></script>
+<script type="module" src="shop.js"></script>
+
+</body>
+
+</html>

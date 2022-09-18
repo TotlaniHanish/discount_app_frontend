@@ -24,7 +24,7 @@ export function post(url, body, functionToCallOnSuccess, functionToCallOnError) 
         headers: {
           Accept: 'application.json',
           'Content-Type': 'application/json',
-          'Authorization': getAuth()
+          'authorization': getAuth()
         },
         body: body,
       }).then(response => {
@@ -37,7 +37,7 @@ export function post(url, body, functionToCallOnSuccess, functionToCallOnError) 
         else
           functionToCallOnError(data);
       }).catch(error => {
-        console.log(error);
+        // console.log(error);
         if (functionToCallOnError)
             functionToCallOnError();
       });
