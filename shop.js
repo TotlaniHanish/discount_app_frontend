@@ -1,18 +1,23 @@
 import * as common from './httpRequest.js';
 
-const login = () => {
+const create = () => {
     let name = document.getElementById('name').value;
-    let contact = document.getElementById('contact').value;
+    let mobileNumber = document.getElementById('contact').value;
     let address = document.getElementById('address').value;
     let city = document.getElementById('city').value;
+    let id = document.getElementById('id').value;
     let shopData = {
         name,
-        contact,
+        mobileNumber,
         address,
-        city
+        city,
+        id
     };
-
-    common.post('/shop', JSON.stringify(shopData),  createShopSuccess);
+    if (!id)
+        common.post('/shop/add', JSON.stringify(shopData),  createShopSuccess);
+    else {
+        common.post('/shop/update/'+id, JSON.stringify(shopData), createShopSuccess);
+    }
 }
 
 const createShopSuccess = (data) => {
@@ -21,5 +26,20 @@ const createShopSuccess = (data) => {
     document.location.href = "index.html";
 }
 
+const getShopSuccess = (data) => {
+    console.log(data);
+    document.getElementById('name').value = data?.data?.name;
+    document.getElementById('contact').value = data?.data?.mobileNumber;
+    document.getElementById('address').value = data?.data?.address;
+    document.getElementById('city').value = data?.data?.city;
+    document.getElementById('id').value = data?.data?.id;
+}
 
-document.getElementById('createshop').onclick = login;
+const getShop = () => {
+    common.get('/shop/getShopByUserId', getShopSuccess);
+};
+
+
+document.getElementById('createshop').onclick = create;
+
+getShop();

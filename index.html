@@ -30,7 +30,7 @@
                             <span class="me-2" id="userlogo"><i class="fa fa-user"></i></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="shop.html">Shop</a></li>
+                            <li id="shoplink"><a class="dropdown-item" href="shop.html">Shop</a></li>
                             <li><a class="dropdown-item" id="logoutbtn">Log Out</a></li>
                         </ul>
                     </li>
@@ -157,6 +157,8 @@
             if (sessionStorage.getItem('auth') !== null) {
                 document.getElementById('signbtn').style.display = "none";
                 document.getElementById('loginbtn').style.display = "none";
+                if (!sessionStorage.getItem('isShopOwner'))
+                    document.getElementById('shoplink').style.display = "none";
                 // document.getElementById('logoutbtn').style.display = "none";
                 document.getElementById('userdetails').innerHTML = sessionStorage.getItem("userfirstname") + " " + sessionStorage.getItem("userlastname")
 
