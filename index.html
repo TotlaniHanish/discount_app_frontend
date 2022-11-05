@@ -20,15 +20,26 @@
                 <img src="./images/PngItem_1274996.png" alt="" width="110" height="32"
                     class="d-inline-block align-text-top">
             </a>
+
             <span class="navbar-text">
-                <span id="userdetails"></span>
-                <span class="me-2" id="userlogo"><i class="fa fa-user"></i></span>
+                <ul class="m-0 nav">
+                    <li class=" dropstart">
+                        <a style="text-decoration: none; color: rgb(107, 106, 106);" class=" dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false" id="hide-dropdown">
+                            <span id="userdetails"></span>
+                            <span class="me-2" id="userlogo"><i class="fa fa-user"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="shop.html">Shop</a></li>
+                            <li><a class="dropdown-item" id="logoutbtn">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 <a href="signup.html"><button class="btn btn-outline-success" id="signbtn" type="submit">Sign
                         Up</button></a>
                 <a href="login.html"><button class="btn btn-outline-success" id="loginbtn" type="submit">Log
                         In</button></a>
-                <button class="btn btn-outline-success" onclick="onLogOut()" id="logoutbtn" type="submit">Log
-                    Out</button>
+
             </span>
         </div>
     </nav>
@@ -141,26 +152,24 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script>
-        function onLogOut(){
-            sessionStorage.removeItem("auth")
-            sessionStorage.removeItem("userfirstname")
-            sessionStorage.removeItem("userlastname")
-            window.location.reload();
-        }
+
         function showHide() {
             if (sessionStorage.getItem('auth') !== null) {
                 document.getElementById('signbtn').style.display = "none";
                 document.getElementById('loginbtn').style.display = "none";
+                // document.getElementById('logoutbtn').style.display = "none";
                 document.getElementById('userdetails').innerHTML = sessionStorage.getItem("userfirstname") + " " + sessionStorage.getItem("userlastname")
 
             } else {
                 document.getElementById('logoutbtn').style.display = "none";
                 document.getElementById('userdetails').style.display = "none";
                 document.getElementById('userlogo').style.display = "none";
+                document.getElementById('hide-dropdown').style.display = "none";
             }
         }
-        
+
     </script>
+    <script type="module" src="logout.js"></script>
 </body>
 
 </html>
