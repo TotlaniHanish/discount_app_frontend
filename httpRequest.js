@@ -32,7 +32,7 @@ export function post(url, body, functionToCallOnSuccess, functionToCallOnError) 
         return response.json();
       }).then(data => {
         console.log(data);
-        if (functionToCallOnSuccess && data.statusCode == 200)
+        if (functionToCallOnSuccess && (data.statusCode == 200 || data.statusCode == 201))
           functionToCallOnSuccess(data);
         else
           functionToCallOnError(data);
