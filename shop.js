@@ -28,11 +28,13 @@ const createShopSuccess = (data) => {
 
 const getShopSuccess = (data) => {
     console.log(data);
-    document.getElementById('name').value = data?.data?.name;
-    document.getElementById('contact').value = data?.data?.mobileNumber;
-    document.getElementById('address').value = data?.data?.address;
-    document.getElementById('city').value = data?.data?.city;
-    document.getElementById('id').value = data?.data?.id;
+    if (data.data) {
+        document.getElementById('name').value = data?.data?.name;
+        document.getElementById('contact').value = data?.data?.mobileNumber;
+        document.getElementById('address').value = data?.data?.address;
+        document.getElementById('city').value = data?.data?.city;
+        document.getElementById('id').value = data?.data?.id;
+    }
 }
 
 const getShop = () => {
