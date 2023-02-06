@@ -63,6 +63,19 @@
                 <label for="inputCity" class="form-label">City</label>
                 <input type="text" class="form-control" id="city" placeholder="City">
             </div>
+
+            <div>
+                <label for="inputCategory" class="form-label">Category</label>
+                <select name="inputCategory" id="inputCategory" class="form-control"></select>
+            </div>
+
+            <div>
+                <label for="inputImage" class="form-label">Upload shop image</label>
+                <input type="file" class="form-control" id="image" placeholder="Image">
+            </div>
+            <div id="uploadedImage">
+
+            </div>
             <div class="col-12">
                 <button type="submit" id="createshop" class="btn btn-primary">Create</button>
             </div>
@@ -82,14 +95,14 @@
             if (sessionStorage.getItem('auth') !== null) {
                 document.getElementById('shopbtn').style.display = "none";
                 document.getElementById('userdetails').innerHTML = sessionStorage.getItem("userfirstname") + " " + sessionStorage.getItem("userlastname")
-            }else{
+            } else {
                 document.location.href = "index.html";
             }
         }
 
     </script>
-<script type="module" src="logout.js"></script>
-<script type="module" src="shop.js"></script>
+    <script type="module" src="logout.js"></script>
+    <script type="module" src="shop.js"></script>
 
 </body>
 
