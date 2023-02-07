@@ -37,12 +37,18 @@ function createFlexDiv(categoryDiv) {
     return flexDiv;
 }
 
-document.goToCategory = (categoryName) => {
-    console.log(categoryName);
+document.goToCategory = (categoryId) => {
+    if (sessionStorage.getItem('auth') !== null) {
+        console.log(categoryId);
+        window.location.href = `categories.html?category=${categoryId}`;
+    } else {
+        alert('Please Login!!');
+        window.location.href = 'login.html';
+    }
 }
 
 function createCategory(category) {
-    return `<div class="card" style="width: 18rem;" onclick="goToCategory('${category.name}')">
+    return `<div class="card" style="width: 18rem;" onclick="goToCategory('${category.id}')">
         <div class="card-header">
             ${category.name}
         </div>
