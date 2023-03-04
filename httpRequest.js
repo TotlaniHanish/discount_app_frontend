@@ -1,5 +1,5 @@
 export function get(url, functionToCallOnSuccess, functionToCallOnError) {
-    fetch('http://localhost:5000' + url, {
+    fetch('http://13.232.202.6:5000' + url, {
         method: 'GET',
         headers: {
           Accept: 'application.json',
@@ -19,7 +19,7 @@ export function get(url, functionToCallOnSuccess, functionToCallOnError) {
 }
 
 export function post(url, body, functionToCallOnSuccess, functionToCallOnError) {
-    fetch('http://localhost:5000' + url, {
+    fetch('http://13.232.202.6:5000' + url, {
         method: 'POST',
         headers: {
           Accept: 'application.json',
@@ -47,7 +47,7 @@ export function postWithFormData(url, event, functionToCallOnSuccess, functionTo
   const files = event.target.files;
   const formData = new FormData();
   formData.append('myFile', files[0]);
-  fetch('http://localhost:5000' + url, {
+  fetch('http://13.232.202.6:5000' + url, {
     method: 'POST',
     headers: {
       'authorization': getAuth()
